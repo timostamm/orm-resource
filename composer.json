@@ -1,0 +1,23 @@
+{
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1.3",
+    "timostamm/web-resource": "dev-master",
+    "doctrine/orm": "^2.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.3",
+    "mikey179/vfsStream": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "TS\\Web\\Resource\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TS\\Web\\Resource\\": "tests/"
+    }
+  }
+}
