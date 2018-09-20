@@ -3,7 +3,6 @@
 namespace TS\Web\Resource;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\ResolveTargetEntityListener;
 use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\Setup;
 use org\bovigo\vfs\vfsStream;
@@ -23,9 +22,6 @@ trait DatabaseSetupTrait
 
     /** @var EntityManager */
     protected $em;
-
-    /** @var ResolveTargetEntityListener */
-    private $rtel;
 
 
     protected function getEntityClasses(): array
@@ -78,12 +74,7 @@ trait DatabaseSetupTrait
             $entityDirectories[] = dirname($reflector->getFileName());
         }
 
-        $em = $this->createEntityManager($entityDirectories);
-
-        $this->rtel = new ResolveTargetEntityListener();
-        $em->getEventManager()->addEventSubscriber($this->rtel);
-
-        $this->em = $em;
+        $this->em = $this->createEntityManager($entityDirectories);
     }
 
 
