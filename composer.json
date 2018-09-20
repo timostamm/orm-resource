@@ -1,5 +1,7 @@
 {
-  "type": "project",
+  "name": "timostamm/orm-resource",
+  "description": "Store files in a Doctrine ORM database",
+  "type": "library",
   "license": "MIT",
   "require": {
     "php": "^7.1.3",
