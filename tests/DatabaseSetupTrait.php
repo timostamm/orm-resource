@@ -3,10 +3,14 @@
 namespace TS\Web\Resource;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\SchemaTool;
 use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\Tools\ToolsException;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
+use ReflectionClass;
+use ReflectionException;
 use TS\Web\Resource\Entity\EmbeddedResource;
 use TS\Web\Resource\Entity\TestEntity;
 
@@ -31,9 +35,9 @@ trait DatabaseSetupTrait
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\Tools\ToolsException
-     * @throws \ReflectionException
+     * @throws ORMException
+     * @throws ToolsException
+     * @throws ReflectionException
      */
     protected function setUp()
     {
@@ -62,15 +66,15 @@ trait DatabaseSetupTrait
 
     /**
      * @param mixed ...$useBasedirOfThisClass
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \ReflectionException
+     * @throws ORMException
+     * @throws ReflectionException
      */
     private function setUpEntityManager(...$useBasedirOfThisClass)
     {
         $entityDirectories = [];
 
         foreach ($useBasedirOfThisClass as $class) {
-            $reflector = new \ReflectionClass($class);
+            $reflector = new ReflectionClass($class);
             $entityDirectories[] = dirname($reflector->getFileName());
         }
 
@@ -79,7 +83,7 @@ trait DatabaseSetupTrait
 
 
     /**
-     * @throws \Doctrine\ORM\Tools\ToolsException
+     * @throws ToolsException
      */
     private function createSchema(): void
     {
@@ -92,8 +96,8 @@ trait DatabaseSetupTrait
 
     private function setupORMResourceHandler(string $storageDir): void
     {
-        $subscriber = new ORMResourceHandler(new HashStorage($storageDir));
-        $this->storage = $subscriber->getStorage();
+        $this->storage = new HashStorage($storageDir);
+        $subscriber = new ORMResourceHandler($this->storage);
         $this->em->getEventManager()->addEventSubscriber($subscriber);
     }
 
@@ -101,7 +105,7 @@ trait DatabaseSetupTrait
     /**
      * @param array $entityDirectories
      * @return EntityManager
-     * @throws \Doctrine\ORM\ORMException
+     * @throws ORMException
      */
     private function createEntityManager(array $entityDirectories): EntityManager
     {

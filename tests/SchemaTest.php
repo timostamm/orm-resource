@@ -3,6 +3,7 @@
 namespace TS\Web\Resource\Entity;
 
 
+use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Platforms\SqlitePlatform;
 use Doctrine\ORM\Tools\SchemaValidator;
@@ -36,7 +37,7 @@ class SchemaTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\DBAL\DBALException
+     * @throws DBALException
      */
     public function testSchemaInSyncWithMetadata()
     {

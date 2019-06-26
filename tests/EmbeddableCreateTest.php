@@ -9,6 +9,9 @@
 namespace TS\Web\Resource;
 
 
+use Doctrine\Common\Persistence\Mapping\MappingException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use PHPUnit\Framework\TestCase;
 use TS\Web\Resource\Entity\TestEntity;
 
@@ -22,9 +25,9 @@ class EmbeddableCreateTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @throws MappingException
      */
     public function testStore()
     {
