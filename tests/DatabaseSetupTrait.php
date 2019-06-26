@@ -116,7 +116,8 @@ trait DatabaseSetupTrait
 
         // Database configuration parameters
         $connectionParams = array(
-            'url' => $GLOBALS['DB_URL']
+            'url' => $GLOBALS['DB_URL'],
+            'driver' => 'pdo_sqlite'
         );
 
         // Obtaining the entity manager
