@@ -9,7 +9,11 @@
 namespace TS\Web\Resource;
 
 
+use Doctrine\Common\Persistence\Mapping\MappingException;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Tools\ToolsException;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use TS\Web\Resource\Entity\TestEntity;
 
 
@@ -22,10 +26,10 @@ class EmbeddedLoadTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\Tools\ToolsException
-     * @throws \ReflectionException
+     * @throws MappingException
+     * @throws ORMException
+     * @throws ToolsException
+     * @throws ReflectionException
      */
     protected function setUp()
     {
@@ -45,7 +49,7 @@ class EmbeddedLoadTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
+     * @throws ORMException
      */
     public function testEmpty()
     {
@@ -57,7 +61,7 @@ class EmbeddedLoadTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
+     * @throws ORMException
      */
     public function testRemove()
     {

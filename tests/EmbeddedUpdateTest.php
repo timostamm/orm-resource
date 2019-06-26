@@ -9,7 +9,12 @@
 namespace TS\Web\Resource;
 
 
+use Doctrine\Common\Persistence\Mapping\MappingException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Tools\ToolsException;
 use PHPUnit\Framework\TestCase;
+use ReflectionException;
 use TS\Web\Resource\Entity\TestEntity;
 
 
@@ -22,11 +27,11 @@ class EntityWithEmbeddedTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\ORM\Tools\ToolsException
-     * @throws \ReflectionException
+     * @throws MappingException
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @throws ToolsException
+     * @throws ReflectionException
      */
     protected function setUp()
     {
@@ -46,9 +51,9 @@ class EntityWithEmbeddedTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @throws MappingException
      */
     public function testReplace()
     {
@@ -71,9 +76,9 @@ class EntityWithEmbeddedTest extends TestCase
 
 
     /**
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @throws \Doctrine\Common\Persistence\Mapping\MappingException
+     * @throws ORMException
+     * @throws OptimisticLockException
+     * @throws MappingException
      */
     public function testRemove()
     {
