@@ -1,7 +1,5 @@
 # ORM Resources
 
-[![Build Status](https://api.travis-ci.org/timostamm/orm-resource.png)](https://travis-ci.org/timostamm/orm-resource)
-
 
 Doesn't actually store the files in the database, but puts them in a storage directory and references them in the database.
 
