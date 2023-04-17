@@ -4,13 +4,15 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": "^7.1.3",
+    "php": "^7.2 || ^8.0",
     "timostamm/web-resource": "^1.1.0",
     "doctrine/orm": "^2.6"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.3",
-    "mikey179/vfsStream": "^1.6"
+    "phpunit/phpunit": "^8.5.23 || ^9",
+    "mikey179/vfsstream": "^1.6.11",
+    "symfony/cache": ">=4.4 < 6",
+    "doctrine/annotations": "^2.0"
   },
   "autoload": {
     "psr-4": {

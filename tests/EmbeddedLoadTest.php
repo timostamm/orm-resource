@@ -31,7 +31,7 @@ class EmbeddedLoadTest extends TestCase
      * @throws ToolsException
      * @throws ReflectionException
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->setUpDb();
 

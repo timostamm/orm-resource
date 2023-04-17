@@ -39,7 +39,7 @@ trait DatabaseSetupTrait
      * @throws ToolsException
      * @throws ReflectionException
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->vfs = vfsStream::setup('root', null, [
             'hash-storage' => []
@@ -57,7 +57,7 @@ trait DatabaseSetupTrait
     /**
      * Shutdown database connection.
      */
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->em->close();
         $this->em = null;
