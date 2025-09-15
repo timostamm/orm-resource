@@ -6,7 +6,7 @@
   "require": {
     "php": "^8.0",
     "timostamm/web-resource": "^2.0",
-    "doctrine/orm": "^2.6"
+    "doctrine/orm": "^2.11"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.6.20",
