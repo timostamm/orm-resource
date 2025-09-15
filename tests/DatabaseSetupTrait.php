@@ -112,7 +112,7 @@ trait DatabaseSetupTrait
         // Create a simple "default" Doctrine ORM configuration for Annotations
         $isDevMode = true;
 
-        $config = Setup::createAnnotationMetadataConfiguration($entityDirectories, $isDevMode, null, null, false);
+        $config = Setup::createAttributeMetadataConfiguration($entityDirectories, $isDevMode, null, null, false);
 
         // Database configuration parameters
         $connectionParams = array(
