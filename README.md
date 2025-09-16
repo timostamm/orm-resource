@@ -15,14 +15,14 @@ Files in the file system are never deleted.
 #### Example
 
 ```PHP
+use Doctrine\ORM\Mapping as ORM;
+use TS\Web\Resource\Entity\EmbeddedResource;
+use TS\Web\Resource\ResourceInterface;
 
-/** @ORM\Entity() */
+#[ORM\Entity]
 class TestEntity
 {
-
-    /**
-     * @ORM\Embedded(class = EmbeddedResource::class )
-     */
+    #[ORM\Embedded(class: EmbeddedResource::class)]
     private $file;
 
 
