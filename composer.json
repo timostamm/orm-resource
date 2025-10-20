@@ -9,6 +9,7 @@
     "doctrine/orm": "^2.11"
   },
   "require-dev": {
+    "doctrine/annotations": "^2.0",
     "phpunit/phpunit": "^9.6.20",
     "mikey179/vfsstream": "^1.6.11",
     "symfony/cache": "^5.4 || 6.4"

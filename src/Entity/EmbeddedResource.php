@@ -16,6 +16,9 @@ use TS\Web\Resource\ORMResourceHandler;
 use TS\Web\Resource\ResourceInterface;
 
 
+/**
+ * @ORM\Embeddable()
+ */
 #[ORM\Embeddable]
 class EmbeddedResource implements ResourceInterface
 {
@@ -33,21 +36,39 @@ class EmbeddedResource implements ResourceInterface
     }
 
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
     #[ORM\Column(type: 'string', length: 64, nullable: true)]
     protected $hash;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     #[ORM\Column(type: 'string', nullable: true)]
     protected $filename;
 
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     #[ORM\Column(type: 'string', nullable: true)]
     protected $mimetype;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     #[ORM\Column(type: 'integer', nullable: true)]
     protected $length;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
     #[ORM\Column(type: 'datetime', nullable: true)]
     protected $lastmodfied;
 
+    /**
+     * @ORM\Column(type="array", name="attributes", nullable=true)
+     */
     #[ORM\Column(type: 'array', name: 'attributes', nullable: true)]
     protected $attributes;
 

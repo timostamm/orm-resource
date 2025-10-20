@@ -109,10 +109,17 @@ trait DatabaseSetupTrait
      */
     private function createEntityManager(array $entityDirectories): EntityManager
     {
-        // Create a simple "default" Doctrine ORM configuration for Annotations
         $isDevMode = true;
 
-        $config = Setup::createAttributeMetadataConfiguration($entityDirectories, $isDevMode, null, null, false);
+        // Support both attribute and annotation drivers
+        // Can be configured via TEST_METADATA_DRIVER environment variable
+        $driver = $_ENV['TEST_METADATA_DRIVER'] ?? 'attribute';
+
+        if ($driver === 'annotation') {
+            $config = Setup::createAnnotationMetadataConfiguration($entityDirectories, $isDevMode, null, null, false);
+        } else {
+            $config = Setup::createAttributeMetadataConfiguration($entityDirectories, $isDevMode, null, null, false);
+        }
 
         // Database configuration parameters
         $connectionParams = array(

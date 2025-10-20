@@ -6,6 +6,7 @@
     <ini name="error_reporting" value="-1"/>
     <!--<var name="DB_URL" value="mysql://root@localhost/w2p_core" />-->
     <var name="DB_URL" value="sqlite:///:memory:"/>
+    <env name="TEST_METADATA_DRIVER" value="attribute"/>
   </php>
   <testsuites>
     <testsuite name="Project Test Suite">
