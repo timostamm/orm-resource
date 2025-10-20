@@ -12,12 +12,19 @@ use Doctrine\ORM\Mapping as ORM;
 use TS\Web\Resource\ResourceInterface;
 
 
+/**
+ * @ORM\Entity()
+ */
 #[ORM\Entity]
 class TestEntity
 {
 
 
     /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     *
      * Initial value -1: @see https://github.com/doctrine/doctrine2/issues/4584
      */
     #[ORM\Id]
@@ -26,10 +33,16 @@ class TestEntity
     private $id = -1;
 
 
+    /**
+     * @ORM\Embedded(class = EmbeddedResource::class)
+     */
     #[ORM\Embedded(class: EmbeddedResource::class)]
     private $file;
 
 
+    /**
+     * @ORM\Embedded(class = EmbeddedResource::class)
+     */
     #[ORM\Embedded(class: EmbeddedResource::class)]
     private $other;
 

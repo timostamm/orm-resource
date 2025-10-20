@@ -12,7 +12,11 @@ This package uses timostamm/web-resource for file representation.
 Files in the file system are never deleted.
 
 
-#### Example
+## Example
+
+The library supports both **PHP 8 Attributes** and **Doctrine Annotations** for mapping definitions.
+
+### Using PHP 8 Attributes
 
 ```PHP
 use Doctrine\ORM\Mapping as ORM;
@@ -47,6 +51,45 @@ $e->setFile(Resource::fromFile(__FILE__));
 
 $em->persist($e);
 $em->flush($e);
+```
+
+### Using Doctrine Annotations
+
+```PHP
+use Doctrine\ORM\Mapping as ORM;
+use TS\Web\Resource\Entity\EmbeddedResource;
+use TS\Web\Resource\ResourceInterface;
+
+/**
+ * @ORM\Entity()
+ */
+class TestEntity
+{
+    /**
+     * @ORM\Embedded(class = EmbeddedResource::class)
+     */
+    private $file;
 
 
+    public function getFile(): ?ResourceInterface
+    {
+        return $this->file;
+    }
+
+    public function setFile(?ResourceInterface $resource): void
+    {
+        $this->file = EmbeddedResource::create($resource);
+    }
+
+}
+
+
+$em->getEventManager()
+    ->addEventSubscriber(new ORMResourceHandler(new HashStorage($storageDir)));
+
+$e = new TestEntity();
+$e->setFile(Resource::fromFile(__FILE__));
+
+$em->persist($e);
+$em->flush($e);
 ```
